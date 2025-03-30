@@ -36,12 +36,30 @@ vim.api.nvim_set_keymap("n", "<C-s>", ":w<CR>", { noremap = true, silent = true 
 vim.api.nvim_set_keymap("n", "<leader>w", ":wq<CR>", { noremap = true, silent = true })
 vim.api.nvim_set_keymap("n", "<leader>q", ":q!<CR>", { noremap = true, silent = true })
 vim.api.nvim_set_keymap('n', '<Esc>', ':noh<CR>', { noremap = true, silent = true })
+vim.api.nvim_set_keymap("n", "<leader>c", ":w !clip.exe<CR><CR>", { noremap = true, silent = true })
+vim.api.nvim_set_keymap("v", "<leader>c", ":w !clip.exe<CR><CR>", { noremap = true, silent = true })
+
+local bufopts = { noremap = true, silent = true, buffer = bufnr }
+vim.keymap.set('n', 'K', vim.lsp.buf.hover, bufopts);
+vim.keymap.set('n', '<leader>e', vim.diagnostic.open_float, bufopts)
+
+
+
 
 vim.keymap.set('n', 'j', 'gj', { noremap = true, silent = true })
 vim.keymap.set('n', 'k', 'gk', { noremap = true, silent = true })
 vim.cmd([[colorscheme catppuccin-mocha]])
 
 
+
+local on_attach = function(client, bufnr)
+  local bufopts = { noremap = true, silent = true, buffer = bufnr }
+  vim.keymap.set('n', '<leader><space>', vim.lsp.buf.hover, bufopts)
+end
+
+
+
+-- Remeber last-time cursor postion 
 vim.api.nvim_create_autocmd("BufReadPost", {
   pattern = "*",
   callback = function()
