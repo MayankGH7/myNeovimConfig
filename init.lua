@@ -39,7 +39,7 @@ vim.api.nvim_set_keymap('n', '<Esc>', ':noh<CR>', { noremap = true, silent = tru
 
 vim.keymap.set('n', 'j', 'gj', { noremap = true, silent = true })
 vim.keymap.set('n', 'k', 'gk', { noremap = true, silent = true })
-vim.cmd([[colorscheme tokyonight-night]])
+vim.cmd([[colorscheme catppuccin-mocha]])
 
 
 vim.api.nvim_create_autocmd("BufReadPost", {
