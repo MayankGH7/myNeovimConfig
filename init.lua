@@ -38,10 +38,12 @@ vim.api.nvim_set_keymap("n", "<leader>q", ":q!<CR>", { noremap = true, silent = 
 vim.api.nvim_set_keymap('n', '<Esc>', ':noh<CR>', { noremap = true, silent = true })
 vim.api.nvim_set_keymap("n", "<leader>c", ":w !clip.exe<CR><CR>", { noremap = true, silent = true })
 vim.api.nvim_set_keymap("v", "<leader>c", ":w !clip.exe<CR><CR>", { noremap = true, silent = true })
+vim.api.nvim_set_keymap("n", "<leader>e", ":NvimTreeToggle<CR>", {noremap = true, silent = true})
+vim.api.nvim_set_keymap("n", "<leader><leader>e", ":NvimTreeFocus<CR>", {noremap = true, silent = true})
 
 local bufopts = { noremap = true, silent = true, buffer = bufnr }
 vim.keymap.set('n', 'K', vim.lsp.buf.hover, bufopts);
-vim.keymap.set('n', '<leader>e', vim.diagnostic.open_float, bufopts)
+vim.keymap.set('n', '<leader>d', vim.diagnostic.open_float, bufopts)
 
 
 
