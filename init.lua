@@ -34,7 +34,10 @@ vim.api.nvim_set_keymap("n", "<C-s>", ":w<CR>", { noremap = true, silent = true 
 vim.api.nvim_set_keymap("n", "<leader>w", ":wq<CR>", { noremap = true, silent = true })
 vim.api.nvim_set_keymap("n", "<leader>q", ":q!<CR>", { noremap = true, silent = true })
 
+vim.keymap.set('n', 'j', 'gj', { noremap = true, silent = true })
+vim.keymap.set('n', 'k', 'gk', { noremap = true, silent = true })
 vim.cmd([[colorscheme tokyonight-night]])
+
 vim.cmd("syntax on")
 vim.cmd("filetype plugin indent on")
 
