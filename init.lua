@@ -50,6 +50,11 @@ vim.keymap.set("t", "<C-l>", "<C-\\><C-n><C-w>l", { desc = "Move Right" })
 vim.keymap.set("t", "<C-j>", "<C-\\><C-n><C-w>j", { desc = "Move Down" })
 vim.keymap.set("t", "<C-k>", "<C-\\><C-n><C-w>k", { desc = "Move Up" })
 vim.keymap.set("n", "<leader>tg", "<cmd>TermExec cmd=lazygit direction=tab<CR>", { desc = "Open Lazygit in Terminal" })
+vim.api.nvim_set_keymap('n', '<Tab>', ':bnext<CR>', { noremap = true, silent = true })
+vim.api.nvim_set_keymap('n', '<S-Tab>', ':bprevious<CR>', { noremap = true, silent = true })
+vim.api.nvim_set_keymap('n', '<leader>bd', ':bdelete<CR>', { noremap = true, silent = true })
+vim.api.nvim_set_keymap('n', '<leader>bw', ':bdelete!<CR>', { noremap = true, silent = true })
+
 
 
 local bufopts = { noremap = true, silent = true, buffer = bufnr }
