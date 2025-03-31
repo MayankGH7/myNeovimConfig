@@ -54,8 +54,6 @@ vim.api.nvim_set_keymap('n', '<Tab>', ':bnext<CR>', { noremap = true, silent = t
 vim.api.nvim_set_keymap('n', '<S-Tab>', ':bprevious<CR>', { noremap = true, silent = true })
 vim.api.nvim_set_keymap('n', '<leader>bd', ':bdelete<CR>', { noremap = true, silent = true })
 vim.api.nvim_set_keymap('n', '<leader>bw', ':bdelete!<CR>', { noremap = true, silent = true })
--- Ensure <Tab> works properly
-vim.api.nvim_set_keymap("i", "<Tab>", 'pumvisible() ? "\\<C-n>" : "\\<Tab>"', { expr = true, noremap = true })
 
 
 
