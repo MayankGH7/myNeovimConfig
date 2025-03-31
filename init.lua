@@ -48,7 +48,7 @@ vim.keymap.set('n', '<leader>d', vim.diagnostic.open_float, bufopts)
 
 vim.keymap.set('n', 'j', 'gj', { noremap = true, silent = true })
 vim.keymap.set('n', 'k', 'gk', { noremap = true, silent = true })
-vim.cmd([[colorscheme catppuccin-mocha]])
+vim.cmd([[colorscheme ayu-dark]])
 
 
 
