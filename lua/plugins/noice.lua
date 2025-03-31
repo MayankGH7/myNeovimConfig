@@ -28,6 +28,21 @@ return {
               end,
             })
       require("noice").setup({
+          routes = {
+            {
+              filter = {
+                event = "msg_show",
+                kind = "",
+                any = {
+                  {find = "written"},
+                  {find = "fewer lines"},
+                }
+              },
+              -- view = "mini",
+              view = "mini",
+              -- opts = { stop = true },
+            },
+          },
           lsp = {
             -- override markdown rendering so that **cmp** and other plugins use **Treesitter**
             override = {
