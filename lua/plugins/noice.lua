@@ -15,6 +15,18 @@ return {
       "rcarriga/nvim-notify",
     },
     config = function()
+          require("notify").setup({
+              render = "default",
+              stages = "fade_in_slide_out",
+              timeout = 3000,
+              -- background_colour = "#000000",
+              fps = 60,
+              max_width = math.floor(vim.o.columns * 0.4),
+              max_height = math.floor(vim.o.lines * 0.3),
+              on_open = function(win)
+                vim.api.nvim_win_set_config(win, { zindex = 100 })
+              end,
+            })
       require("noice").setup({
           lsp = {
             -- override markdown rendering so that **cmp** and other plugins use **Treesitter**
