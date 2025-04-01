@@ -4,6 +4,7 @@ return {
     cmd = "Copilot",
     event = "InsertEnter",
     config = function()
+      vim.cmd[[highlight CopilotSuggestion guifg=#7f849c]]
       require("copilot").setup({
           suggestion = {
             auto_trigger = true,
