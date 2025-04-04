@@ -36,6 +36,7 @@ return {
                 any = {
                   {find = "written"},
                   {find = "fewer lines"},
+                  {find = "more lines"},
                 }
               },
               -- view = "mini",

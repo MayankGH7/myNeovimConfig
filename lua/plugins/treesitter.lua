@@ -8,7 +8,7 @@ return {
       ensure_installed = {"typescript", "python", "tsx", "markdown", "json", "lua", "cpp"},
       sync_install = false,
       highlight = { enable = true, additional_vim_regex_highlighting = false },
-      indent = { enable = false },  
+      indent = { enable = true },  
     })
   end
 }
