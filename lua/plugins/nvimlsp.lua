@@ -65,7 +65,17 @@ return {
     lspconfig.tailwindcss.setup({
       capabilities = capabilities,
       filetypes = { "html", "css", "scss", "javascript", "typescript", "javascriptreact", "typescriptreact" },
-    })
+    });
+
+    lspconfig.jsonls.setup({
+      capabilities = capabilities,
+      settings = {
+        json = {
+          schemas = require('schemastore').json.schemas(),
+          validate = { enable = true },
+        },
+      },
+    });
 
   end,
 }
