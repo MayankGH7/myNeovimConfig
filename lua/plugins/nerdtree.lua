@@ -7,6 +7,17 @@ return {
   },
   config = function()
     require("nvim-tree").setup {
+      diagnostics = {
+        enable = true,
+        show_on_dirs = true,      -- show diagnostics on directories too
+        debounce_delay = 50,
+        icons = {
+          hint = "",
+          info = "",
+          warning = "",
+          error = "",
+        },
+      },
       sort = {
         sorter = "case_sensitive",
       },
