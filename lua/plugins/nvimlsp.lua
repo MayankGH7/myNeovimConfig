@@ -1,25 +1,27 @@
 return {
   'neovim/nvim-lspconfig',
-  --event = 'BufReadPre',
+  event = { 'BufReadPre', 'BufNewFile' },
   dependencies = {
-    'hrsh7th/cmp-nvim-lsp', -- Only keep this
+    'hrsh7th/cmp-nvim-lsp',
   },
   config = function()
     local lspconfig = require('lspconfig')
     local cmp_nvim_lsp = require('cmp_nvim_lsp')
 
+
     vim.diagnostic.config({
       virtual_text = {
-        prefix = "●", -- You can change this symbol
+        prefix = "●",
         spacing = 4,
       },
+      -- virtual_lines = { current_line = true },
       signs = true,
       underline = true,
-      update_in_insert = false, -- Change to true if you want diagnostics to update while typing
+      update_in_insert = false,
       severity_sort = true,
       float = {
         border = "rounded",
-        source = "always", -- Shows source of diagnostic (e.g., tsserver, eslint)
+        source = "always",
       },
     })
 
@@ -28,12 +30,16 @@ return {
       local bufopts = { noremap = true, silent = true, buffer = bufnr }
 
       -- Hover documentation
-      vim.keymap.set('n', 'K', vim.lsp.buf.hover, bufopts)
-
+      vim.keymap.set('n', 'K', function()
+        vim.lsp.buf.hover({
+          border = "rounded",
+        })
+      end, bufopts)
       -- Show diagnostics in floating window
-      vim.keymap.set('n', '<leader>e', vim.diagnostic.open_float, bufopts)
+      vim.keymap.set('n', '<leader>d', vim.diagnostic.open_float, bufopts)
       vim.keymap.set('n', '[d', vim.diagnostic.goto_prev, bufopts)
       vim.keymap.set('n', ']d', vim.diagnostic.goto_next, bufopts)
+      vim.keymap.set('n', "<leader>bf", vim.lsp.buf.format)
     end
 
 
@@ -47,28 +53,47 @@ return {
     -- Example LSP setup
     lspconfig.pyright.setup({
       capabilities = capabilities,
-      -- Other LSP settings if needed
+      on_attach = on_attach,
     });
 
     lspconfig.ts_ls.setup({
       capabilities = capabilities,
+      on_attach = on_attach,
     });
 
     lspconfig.emmet_language_server.setup({
       capabilities = capabilities,
+      on_attach = on_attach,
     });
 
     lspconfig.cssls.setup({
       capabilities = capabilities,
+      on_attach = on_attach,
     });
+
+
+    lspconfig.lua_ls.setup({
+      capabilities = capabilities,
+      on_attach = on_attach,
+      settings = {
+        Lua = {
+          diagnostics = {
+            globals = { 'vim' },
+          },
+        },
+      },
+    });
+
 
     lspconfig.tailwindcss.setup({
       capabilities = capabilities,
+      on_attach = on_attach,
       filetypes = { "html", "css", "scss", "javascript", "typescript", "javascriptreact", "typescriptreact" },
     });
 
     lspconfig.jsonls.setup({
       capabilities = capabilities,
+      on_attach = on_attach,
       settings = {
         json = {
           schemas = require('schemastore').json.schemas(),
@@ -77,6 +102,12 @@ return {
       },
     });
 
+    lspconfig.clangd.setup({
+      capabilities = capabilities,
+      on_attach = on_attach,
+      cmd = { "clangd", "--background-index" },
+      filetypes = { "c", "cpp", "objc", "objcpp" },
+      root_dir = lspconfig.util.root_pattern("compile_commands.json", ".git"),
+    });
   end,
 }
-

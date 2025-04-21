@@ -1,5 +1,6 @@
 return {
   "Shatur/neovim-ayu",
+  lazy = false,
   config = function()
     local is_termux = os.getenv("TERMUX_VERSION") ~= nil
 
