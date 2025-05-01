@@ -35,3 +35,7 @@ vim.api.nvim_set_keymap('n', '<leader>bw', ':bdelete!<CR>', { noremap = true, si
 -- Better line navigation with wrapping
 vim.keymap.set('n', 'j', 'gj', { noremap = true, silent = true })
 vim.keymap.set('n', 'k', 'gk', { noremap = true, silent = true })
+
+
+-- Noice plugin mappings
+vim.keymap.set("n", "<leader>dn", "<cmd>Noice dismiss<cr>", { desc = "Dismiss all notifications" })
