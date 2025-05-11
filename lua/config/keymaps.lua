@@ -38,4 +38,4 @@ vim.keymap.set('n', 'k', 'gk', { noremap = true, silent = true })
 
 
 -- Noice plugin mappings
-vim.keymap.set("n", "<leader>dn", "<cmd>Noice dismiss<cr>", { desc = "Dismiss all notifications" })
+-- vim.keymap.set("n", "<leader>dn", "<cmd>Noice dismiss<cr>", { desc = "Dismiss all notifications" })

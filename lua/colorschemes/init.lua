@@ -10,4 +10,5 @@ return {
   require("colorschemes.grubox"),
   require("colorschemes.githubdark"),
   require("colorschemes.ayudark"),
+  require("colorschemes.rosepine"),
 }
