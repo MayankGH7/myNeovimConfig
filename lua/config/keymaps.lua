@@ -7,8 +7,16 @@ vim.api.nvim_set_keymap("n", "<leader>q", ":q!<CR>", { noremap = true, silent = 
 vim.api.nvim_set_keymap('n', '<Esc>', ':noh<CR>', { noremap = true, silent = true })
 
 -- Clipboard operations
-vim.api.nvim_set_keymap("n", "<leader>c", ":w !clip.exe<CR><CR>", { noremap = true, silent = true })
-vim.api.nvim_set_keymap("v", "<leader>c", ":w !clip.exe<CR><CR>", { noremap = true, silent = true })
+
+if vim.loop.os_uname().sysname == "Windows_NT" then
+  -- Windows keymap
+  vim.api.nvim_set_keymap("n", "<leader>c", ":w !clip.exe<CR><CR>", { noremap = true, silent = true })
+  vim.api.nvim_set_keymap("v", "<leader>c", ":w !clip.exe<CR><CR>", { noremap = true, silent = true })
+elseif vim.fn.has("unix") == 1 and os.getenv("PREFIX") == "/data/data/com.termux/files/usr" then
+  -- Termux keymap
+  vim.api.nvim_set_keymap("v", "<leader>c", ":w !termux-clipboard-set<CR><CR>", { noremap = true, silent = true })
+  vim.api.nvim_set_keymap("n", "<leader>c", ":w !termux-clipboard-set<CR><CR>", { noremap = true, silent = true })
+end
 
 -- NvimTree
 vim.api.nvim_set_keymap("n", "<leader>e", ":NvimTreeToggle<CR>", { noremap = true, silent = true })
@@ -39,3 +47,7 @@ vim.keymap.set('n', 'k', 'gk', { noremap = true, silent = true })
 
 -- Noice plugin mappings
 -- vim.keymap.set("n", "<leader>dn", "<cmd>Noice dismiss<cr>", { desc = "Dismiss all notifications" })
+
+vim.keymap.set('v', '<leader>p', '"_dP', { noremap = true, silent = true })
+vim.keymap.set('v', 'J', ":m '>+1<CR>gv=gv", { noremap = true, silent = true })
+vim.keymap.set('v', 'K', ":m '<-2<CR>gv=gv", { noremap = true, silent = true })
