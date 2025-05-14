@@ -16,17 +16,19 @@ return {
     })
 
     require'mason-lspconfig'.setup({
-      automatic_enable = true,
+      automatic_enable = false,
       ensure_installed = {
         "lua_ls",
         "gopls",
         "clangd",
-        "pyright",
         "ts_ls",
         "cssls",
         "emmet_language_server",
-        "jsonls"
+        "jsonls",
+        "ruff",
+        "pyright"
       },
+
     })
 
   end,

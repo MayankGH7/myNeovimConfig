@@ -50,11 +50,27 @@ return {
 
     local capabilities = get_capabilities()
 
-    -- Example LSP setup
     lspconfig.pyright.setup({
       capabilities = capabilities,
+      -- on_attach = function(client, bufnr)
+      --   client.handlers["textDocument/publishDiagnostics"] = function(...) end
+      --   on_attach(client, bufnr)
+      -- end,
       on_attach = on_attach,
+      settings = {
+        python = {
+          analysis = {
+            typeCheckingMode = "off",
+            diagnosticMode = "off",
+          },
+        },
+      },
     });
+
+    -- lspconfig.ruff.setup({
+    --   capabilities = capabilities,
+    --   on_attach = on_attach,
+    -- });
 
     lspconfig.ts_ls.setup({
       capabilities = capabilities,
