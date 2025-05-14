@@ -6,6 +6,7 @@ return {
 
     configs.setup({
       ensure_installed = {"typescript", "python", "tsx", "markdown", "json", "lua", "cpp", "go"},
+      auto_install = true,
       sync_install = false,
       highlight = { enable = true, additional_vim_regex_highlighting = false },
       indent = { enable = true },
