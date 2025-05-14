@@ -40,14 +40,13 @@ vim.api.nvim_set_keymap('n', '<S-Tab>', ':bprevious<CR>', { noremap = true, sile
 vim.api.nvim_set_keymap('n', '<leader>bd', ':bdelete<CR>', { noremap = true, silent = true })
 vim.api.nvim_set_keymap('n', '<leader>bw', ':bdelete!<CR>', { noremap = true, silent = true })
 
--- Better line navigation with wrapping
-vim.keymap.set('n', 'j', 'gj', { noremap = true, silent = true })
-vim.keymap.set('n', 'k', 'gk', { noremap = true, silent = true })
-
 
 -- Noice plugin mappings
--- vim.keymap.set("n", "<leader>dn", "<cmd>Noice dismiss<cr>", { desc = "Dismiss all notifications" })
+vim.keymap.set("n", "<leader>nd", "<cmd>Noice dismiss<cr>", { desc = "Dismiss all notifications" })
 
 vim.keymap.set('v', '<leader>p', '"_dP', { noremap = true, silent = true })
 vim.keymap.set('v', 'J', ":m '>+1<CR>gv=gv", { noremap = true, silent = true })
 vim.keymap.set('v', 'K', ":m '<-2<CR>gv=gv", { noremap = true, silent = true })
+
+
+vim.keymap.set("v", "<leader>w", "J", { noremap = true, silent = true })

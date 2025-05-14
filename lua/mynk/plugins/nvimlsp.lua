@@ -29,17 +29,31 @@ return {
     local function on_attach(client, bufnr)
       local bufopts = { noremap = true, silent = true, buffer = bufnr }
 
-      -- Hover documentation
-      vim.keymap.set('n', 'K', function()
-        vim.lsp.buf.hover({
-          border = "rounded",
-        })
-      end, bufopts)
-      -- Show diagnostics in floating window
       vim.keymap.set('n', '<leader>d', vim.diagnostic.open_float, bufopts)
-      vim.keymap.set('n', '[d', vim.diagnostic.goto_prev, bufopts)
-      vim.keymap.set('n', ']d', vim.diagnostic.goto_next, bufopts)
       vim.keymap.set('n', "<leader>bf", vim.lsp.buf.format)
+
+      vim.keymap.set("n", "gr", function() vim.lsp.buf.references() end,
+        vim.tbl_deep_extend("force", bufopts, { desc = "LSP Goto Reference" }))
+      vim.keymap.set("n", "gd", function() vim.lsp.buf.definition() end,
+        vim.tbl_deep_extend("force", bufopts, { desc = "LSP Goto Definition" }))
+      vim.keymap.set("n", "K", function() vim.lsp.buf.hover() end,
+        vim.tbl_deep_extend("force", bufopts, { desc = "LSP Hover" }))
+      vim.keymap.set("n", "<leader>vws", function() vim.lsp.buf.workspace_symbol() end,
+        vim.tbl_deep_extend("force", bufopts, { desc = "LSP Workspace Symbol" }))
+      vim.keymap.set("n", "<leader>vd", function() vim.diagnostic.setloclist() end,
+        vim.tbl_deep_extend("force", bufopts, { desc = "LSP Show Diagnostics" }))
+      vim.keymap.set("n", "[d", function() vim.diagnostic.goto_next() end,
+        vim.tbl_deep_extend("force", bufopts, { desc = "Next Diagnostic" }))
+      vim.keymap.set("n", "]d", function() vim.diagnostic.goto_prev() end,
+        vim.tbl_deep_extend("force", bufopts, { desc = "Previous Diagnostic" }))
+      vim.keymap.set("n", "<leader>vca", function() vim.lsp.buf.code_action() end,
+        vim.tbl_deep_extend("force", bufopts, { desc = "LSP Code Action" }))
+      vim.keymap.set("n", "<leader>vrr", function() vim.lsp.buf.references() end,
+        vim.tbl_deep_extend("force", bufopts, { desc = "LSP References" }))
+      vim.keymap.set("n", "<leader>vrn", function() vim.lsp.buf.rename() end,
+        vim.tbl_deep_extend("force", bufopts, { desc = "LSP Rename" }))
+      vim.keymap.set("i", "<C-h>", function() vim.lsp.buf.signature_help() end,
+        vim.tbl_deep_extend("force", bufopts, { desc = "LSP Signature Help" }))
     end
 
 

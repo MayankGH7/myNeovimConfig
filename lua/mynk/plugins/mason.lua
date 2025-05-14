@@ -4,8 +4,7 @@ return {
     "mason-org/mason-lspconfig.nvim",
   },
   config = function()
-
-    require'mason'.setup({
+    require 'mason'.setup({
       ui = {
         icons = {
           package_installed = "✓",
@@ -15,7 +14,7 @@ return {
       }
     })
 
-    require'mason-lspconfig'.setup({
+    require 'mason-lspconfig'.setup({
       automatic_enable = false,
       ensure_installed = {
         "lua_ls",
@@ -26,10 +25,9 @@ return {
         "emmet_language_server",
         "jsonls",
         "ruff",
-        "pyright"
+        "pyright",
       },
 
     })
-
   end,
 }

@@ -1,17 +1,10 @@
-local is_termux = os.getenv("TERMUX_VERSION") ~= nil
 return {
   "folke/noice.nvim",
   enabled = vim.env.TERMUX_VERSION == nil,
   event = "VeryLazy",
-  opts = {
-    -- add any options here
-  },
+  opts = {},
   dependencies = {
-    -- if you lazy-load any plugin below, make sure to add proper `module="..."` entries
     "MunifTanjim/nui.nvim",
-    -- OPTIONAL:
-    --   `nvim-notify` is only needed, if you want to use the notification view.
-    --   If not available, we use `mini` as the fallback
     "rcarriga/nvim-notify",
   },
   config = function()
@@ -45,6 +38,10 @@ return {
             }
           },
           view = "mini",
+        },
+        {
+          filter = { event = "notify", find = "No information available" },
+          opts = { skip = true },
         },
       },
       lsp = {
