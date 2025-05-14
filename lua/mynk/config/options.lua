@@ -10,6 +10,7 @@
 vim.opt.number = true         -- Show line numbers
 vim.opt.relativenumber = true -- Relative line numbers
 vim.opt.tabstop = 2           -- Tab size of 2 spaces
+vim.opt.softtabstop = 2
 vim.opt.shiftwidth = 2        -- Auto-indent size of 2 spaces
 vim.opt.expandtab = true      -- Use spaces instead of tab
 vim.opt.smartindent = false   -- Smart auto-indenting
