@@ -47,6 +47,12 @@ return {
     vim.keymap.set('n', '<leader>fh', builtin.help_tags, { desc = 'Telescope help tags' })
     vim.keymap.set('n', '<leader>fc', builtin.current_buffer_fuzzy_find,
       { desc = 'Telescope fuzzy find in current buffer' })
+    vim.keymap.set('n', '<leader>nf', function()
+      builtin.find_files({
+        prompt_title = "Neovim Config",
+        cwd = vim.fn.stdpath("config"),
+      })
+    end, { desc = 'Telescope find files' })
 
     -- Key mappings for fzf-lua (you can adjust these according to your preference)
     vim.keymap.set('n', '<leader>fl', fzf.files, { desc = 'fzf-lua find files' })

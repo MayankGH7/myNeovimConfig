@@ -15,7 +15,6 @@ return {
     })
 
     local servers = {
-        "lua_ls",
         "gopls",
         "ts_ls",
         "cssls",
@@ -28,6 +27,7 @@ return {
     if not is_termux then
       table.insert(servers, "ruff")
       table.insert(servers, "clangd")
+      table.insert(servers, "lua_ls")
     end
 
     require 'mason-lspconfig'.setup({
