@@ -41,7 +41,7 @@ return {
 			tabline = {},
 			winbar = {},
 			inactive_winbar = {},
-			extensions = { "fugitive", "fzf", "lazy", "mason" },
+			extensions = { "fugitive", "fzf", "lazy", "mason", "oil", "trouble" },
 			-- extensions = { "fugitive", "quickfix", "fzf", "lazy", "mason", "nvim-dap-ui", "oil", "trouble" },
 		}
 	end

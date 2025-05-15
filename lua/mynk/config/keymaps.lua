@@ -50,3 +50,6 @@ vim.keymap.set('v', 'K', ":m '<-2<CR>gv=gv", { noremap = true, silent = true })
 
 
 vim.keymap.set("v", "<leader>w", "J", { noremap = true, silent = true })
+
+vim.keymap.set("n", "<leader>sw2", ":set shiftwidth=2<CR>", { noremap = true, silent = true, desc = "Set shiftwidth to 2" })
+vim.keymap.set("n", "<leader>sw4", ":set shiftwidth=4<CR>", { noremap = true, silent = true, desc = "Set shiftwidth to 4" })
