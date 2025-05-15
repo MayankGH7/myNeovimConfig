@@ -30,7 +30,7 @@ return {
       local bufopts = { noremap = true, silent = true, buffer = bufnr }
 
       vim.keymap.set('n', '<leader>d', vim.diagnostic.open_float, bufopts)
-      vim.keymap.set('n', "<leader>bf", vim.lsp.buf.format)
+      -- vim.keymap.set('n', "<leader>bf", vim.lsp.buf.format)
 
       vim.keymap.set("n", "gr", function() vim.lsp.buf.references() end,
         vim.tbl_deep_extend("force", bufopts, { desc = "LSP Goto Reference" }))

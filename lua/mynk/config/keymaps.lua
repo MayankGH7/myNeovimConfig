@@ -37,8 +37,14 @@ vim.keymap.set("n", "<leader>tg", "<cmd>TermExec cmd=lazygit direction=tab<CR>",
 -- Buffer navigation
 vim.api.nvim_set_keymap('n', '<Tab>', ':bnext<CR>', { noremap = true, silent = true })
 vim.api.nvim_set_keymap('n', '<S-Tab>', ':bprevious<CR>', { noremap = true, silent = true })
-vim.api.nvim_set_keymap('n', '<leader>bd', ':bdelete<CR>', { noremap = true, silent = true })
-vim.api.nvim_set_keymap('n', '<leader>bw', ':bdelete!<CR>', { noremap = true, silent = true })
+-- Close current buffer but keep the window layout
+vim.keymap.set('n', '<leader>bd', '<cmd>bp|bd #<CR>', { desc = "Close buffer", silent = true })
+-- Force delete current buffer (use with caution)
+vim.keymap.set('n', '<leader>bf', '<cmd>bdelete!<CR>', { desc = "Force close buffer", silent = true })
+-- Close all buffers except current
+vim.keymap.set('n', '<leader>bo', ':%bd|e#|bd#<CR>', { desc = "Close other buffers", silent = true })
+-- Close all buffers
+vim.keymap.set('n', '<leader>ba', ':%bd<CR>', { desc = "Close all buffers", silent = true })
 
 
 -- Noice plugin mappings
@@ -51,5 +57,7 @@ vim.keymap.set('v', 'K', ":m '<-2<CR>gv=gv", { noremap = true, silent = true })
 
 vim.keymap.set("v", "<leader>w", "J", { noremap = true, silent = true })
 
-vim.keymap.set("n", "<leader>sw2", ":set shiftwidth=2<CR>", { noremap = true, silent = true, desc = "Set shiftwidth to 2" })
-vim.keymap.set("n", "<leader>sw4", ":set shiftwidth=4<CR>", { noremap = true, silent = true, desc = "Set shiftwidth to 4" })
+vim.keymap.set("n", "<leader>sw2", ":set shiftwidth=2<CR>",
+  { noremap = true, silent = true, desc = "Set shiftwidth to 2" })
+vim.keymap.set("n", "<leader>sw4", ":set shiftwidth=4<CR>",
+  { noremap = true, silent = true, desc = "Set shiftwidth to 4" })

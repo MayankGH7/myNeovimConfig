@@ -11,7 +11,7 @@ return {
       -- },
       formatters_by_ft = {
         lua = { "stylua", lsp_format = "fallback" },
-        python = { "ruff", lsp_format = "fallback" },
+        python = { "ruff_format", lsp_format = "fallback" },
         rust = { "rustfmt", lsp_format = "fallback" },
         javascript = { "prettier", "prettierd", stop_after_first = true },
         typescript = { "prettier", "prettierd", stop_after_first = true },
