@@ -6,6 +6,7 @@ return {
   },
   config = function()
     local lspconfig = require('lspconfig')
+    -- local configs = require('lspconfig.configs')
     local cmp_nvim_lsp = require('cmp_nvim_lsp')
 
 
@@ -63,6 +64,16 @@ return {
     end
 
     local capabilities = get_capabilities()
+
+    -- if not configs.ty then
+    --   configs.ty = {
+    --     default_config = {
+    --       cmd = { "ty", "server" },
+    --       filetypes = { "python" },
+    --       root_dir = vim.fs.root(0, { ".git/", "pyproject.toml" }),
+    --     },
+    --   }
+    -- end
 
     lspconfig.pyright.setup({
       capabilities = capabilities,
@@ -161,5 +172,37 @@ return {
       capabilities = capabilities,
       on_attach = on_attach,
     });
+
+    lspconfig.rust_analyzer.setup({
+      capabilities = capabilities,
+      on_attach = on_attach,
+      settings = {
+        ["rust-analyzer"] = {
+          checkOnSave = {
+            command = "clippy",
+          },
+        },
+      },
+    });
+
+    lspconfig.zls.setup({
+      capabilities = capabilities,
+      on_attach = on_attach,
+      settings = {
+        zls = {
+          format = {
+            enable = true,
+          },
+          diagnostics = {
+            enable = true,
+          },
+        },
+      },
+    });
+
+    -- lspconfig.ty.setup({
+    --   capabilities = capabilities,
+    --   on_attach = on_attach,
+    -- })
   end,
 }

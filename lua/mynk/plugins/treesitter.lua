@@ -14,7 +14,7 @@ return {
       highlight = { enable = true, additional_vim_regex_highlighting = false },
       indent = {
         enable = true,
-        disable = { "html" },
+        disable = { "html", "rust" , "zig"},
       },
       incremental_selection = {
         enable = true,
